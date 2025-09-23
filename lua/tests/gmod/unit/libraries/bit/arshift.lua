@@ -10,7 +10,7 @@ return {
         },
 
         {
-            name = "Postive shifting",
+            name = "Postive arithmetic shifting",
             func = function()
                 expect( bit.arshift(8, 1) ).to.equal( 4 )
                 expect( bit.arshift(16, 2) ).to.equal( 4 )
@@ -18,7 +18,7 @@ return {
         },
 
         {
-            name = "Negative shifting",
+            name = "Negative arithmetic shifting",
             func = function()
                 expect( bit.arshift(-8, 1) ).to.equal( -4 )
                 expect( bit.arshift(-16, 2) ).to.equal( -4 )
