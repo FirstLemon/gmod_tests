@@ -18,9 +18,10 @@ return {
         },
 
         {
-            name = "Automatic Fail for easier testing",
+            name = "0 and 1",
             func = function()
-                expect( true ).to.beFalse()
+                expect( bit.bswap(0) ).to.equal( 0 )
+                expect( bit.bswap(-1) ).to.equal( -1 )
             end
         },
     }

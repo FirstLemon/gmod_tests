@@ -25,12 +25,5 @@ return {
                 expect( bit.bxor(-420, -67) ).to.equal( 481 )
             end
         },
-
-        {
-            name = "Automatic Fail for easier testing",
-            func = function()
-                expect( true ).to.beFalse()
-            end
-        },
     }
 }

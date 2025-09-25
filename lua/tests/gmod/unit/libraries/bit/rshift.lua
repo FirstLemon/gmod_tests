@@ -21,7 +21,7 @@ return {
             name = "Negative logical shifting",
             func = function()
                 expect( bit.rshift(-8, 1) ).to.equal( 2147483644 )
-                expect( bit.rshift(-16, 2) ).to.equal( 2147483640 )
+                expect( bit.rshift(-16, 2) ).to.equal( 1073741820 )
             end
         },
 
