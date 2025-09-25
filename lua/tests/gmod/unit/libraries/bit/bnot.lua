@@ -18,5 +18,21 @@ return {
                 expect( bit.bnot(-69) ).to.equal( 68 )
             end
         },
+
+        {
+            name = "Inverting 0 and -1",
+            func = function()
+                expect( bit.bnot(0) ).to.equal( -1 )
+                expect( bit.bnot(-1) ).to.equal( 0 )
+            end
+        },
+
+        {
+            name = "Max and Min values",
+            func = function()
+                expect( bit.bnot(2147483647) ).to.equal( -2147483648 )
+                expect( bit.bnot(-2147483648) ).to.equal( 2147483647 )
+            end
+        },
     }
 }

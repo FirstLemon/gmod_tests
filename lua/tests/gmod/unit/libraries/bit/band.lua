@@ -10,7 +10,7 @@ return {
         },
 
         {
-            name = "Simple positive AND operation",
+            name = "Positive AND operation",
             func = function()
                 expect( bit.band(8, 8) ).to.equal( 8 )
                 expect( bit.band(8, 1) ).to.equal( 0 )
@@ -19,7 +19,7 @@ return {
         },
 
         {
-            name = "Simple negative AND operation",
+            name = "Negative AND operation",
             func = function()
                 expect( bit.band(-8, 8) ).to.equal( 8 )
                 expect( bit.band(-8, 1) ).to.equal( 0 )
@@ -41,6 +41,13 @@ return {
                 expect( bit.band(0, 0, 0) ).to.equal( 0 )
                 expect( bit.band(300, 200, 300) ).to.equal( 8 )
                 expect( bit.band(1, 2, 4, 8, 16, 32, 64) ).to.equal( 0 )
+            end
+        },
+
+        {
+            name = "Order of args doesn't matter",
+            func = function()
+                expect( bit.band(123, 456) ).to.equal( bit.band(456, 123) )
             end
         },
     }
