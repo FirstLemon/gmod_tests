@@ -10,28 +10,38 @@ return {
         },
 
         {
-            name = "Inverting Numbers",
+            name = "Inverting Numbers functions correctly",
             func = function()
-                expect( bit.bnot(8) ).to.equal( -9 )
-                expect( bit.bnot(32) ).to.equal( -33 )
-                expect( bit.bnot(-27534) ).to.equal( 27533 )
-                expect( bit.bnot(-69) ).to.equal( 68 )
+                expect( bit.bnot( 8 ) ).to.equal( -9 )
+                expect( bit.bnot( 32 ) ).to.equal( -33 )
+                expect( bit.bnot( -27534 ) ).to.equal( 27533 )
+                expect( bit.bnot( -69 ) ).to.equal( 68 )
             end
         },
 
         {
-            name = "Inverting 0 and -1",
+            name = "Inverting 0 and -1 functions correctly",
             func = function()
-                expect( bit.bnot(0) ).to.equal( -1 )
-                expect( bit.bnot(-1) ).to.equal( 0 )
+                expect( bit.bnot( 0 ) ).to.equal( -1 )
+                expect( bit.bnot( -1 ) ).to.equal( 0 )
             end
         },
 
         {
-            name = "Max and Min values",
+            name = "Handles Max and Min values correctly",
             func = function()
-                expect( bit.bnot(2147483647) ).to.equal( -2147483648 )
-                expect( bit.bnot(-2147483648) ).to.equal( 2147483647 )
+                expect( bit.bnot( 2147483647 ) ).to.equal( -2147483648 )
+                expect( bit.bnot( -2147483648 ) ).to.equal( 2147483647 )
+            end
+        },
+
+        {
+            name = "Fails on invalid input",
+            func = function()
+                expect( bit.bnot( nil ) ).to.err()
+                expect( bit.bnot( "abc" ) ).to.err()
+                expect( bit.bnot( {} ) ).to.err()
+                expect( bit.bnot() ).to.err()
             end
         },
     }
