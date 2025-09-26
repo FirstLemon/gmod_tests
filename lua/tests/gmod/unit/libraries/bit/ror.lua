@@ -41,12 +41,5 @@ return {
                 expect( bit.ror(16, 16) ).to.expect( 1048576 )
             end
         },
-
-        {
-            name = "Automatic Fail for easier testing",
-            func = function()
-                expect( true ).to.beFalse()
-            end
-        },
     }
 }
