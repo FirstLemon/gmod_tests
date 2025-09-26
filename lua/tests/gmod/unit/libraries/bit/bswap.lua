@@ -28,10 +28,9 @@ return {
         {
             name = "Fails on invalid input",
             func = function()
-                expect( bit.bswap( nil ) ).to.err()
-                expect( bit.bswap( "abc" ) ).to.err()
-                expect( bit.bswap( {} ) ).to.err()
-                expect( bit.bswap() ).to.err()
+                expect( bit.bswap, nil ).to.err()
+                expect( bit.bswap, "abc" ).to.err()
+                expect( bit.bswap, {} ).to.err()
             end
         },
     }

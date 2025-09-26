@@ -28,10 +28,9 @@ return {
         {
             name = "Fails on invalid input",
             func = function()
-                expect( bit.tohex( nil ) ).to.err()
-                expect( bit.tohex( "abc" ) ).to.err()
-                expect( bit.tohex( {} ) ).to.err()
-                expect( bit.tohex() ).to.err()
+                expect( bit.tohex, nil ).to.err()
+                expect( bit.tohex, "abc" ).to.err()
+                expect( bit.tohex, {} ).to.err()
             end
         },
     }

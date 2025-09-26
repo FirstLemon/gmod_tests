@@ -14,7 +14,7 @@ return {
             func = function()
                 expect( bit.ror( 8, 1 ) ).to.expect( 4 )
                 expect( bit.ror( 16, 1 ) ).to.expect( 8 )
-                expect( bit.ror( 469, 4 ) ).to expect( 1342177309 )
+                expect( bit.ror( 469, 4 ) ).to.expect( 1342177309 )
             end
         },
 
@@ -23,7 +23,7 @@ return {
             func = function()
                 expect( bit.ror( -8, 1 ) ).to.expect( 2147483644 )
                 expect( bit.ror( -16, 1 ) ).to.expect( 2147483640 )
-                expect( bit.ror( -469, 4 ) ).to expect( -1073741854 )
+                expect( bit.ror( -469, 4 ) ).to.expect( -1073741854 )
             end
         },
 
@@ -45,10 +45,9 @@ return {
         {
             name = "Fails on invalid input",
             func = function()
-                expect( bit.rol( nil, nil ) ).to.err()
-                expect( bit.rol( "abc", "def" ) ).to.err()
-                expect( bit.rol( {}, {} ) ).to.err()
-                expect( bit.rol() ).to.err()
+                expect( bit.ror, nil, nil ).to.err()
+                expect( bit.ror, "abc", "def" ).to.err()
+                expect( bit.ror, {}, {} ).to.err()
             end
         },
     }

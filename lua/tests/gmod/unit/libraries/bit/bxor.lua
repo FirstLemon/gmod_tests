@@ -37,17 +37,16 @@ return {
         {
             name = "Multiple Arguments",
             func = function()
-                expect( bit.bxor( 1, 2, 3, 4 , 5 ) ).to.equal( 15 )
+                expect( bit.bxor( 1, 2, 3, 4, 5 ) ).to.equal( 15 )
             end
         },
 
         {
             name = "Fails on invalid input",
             func = function()
-                expect( bit.bxor( nil, nil ) ).to.err()
-                expect( bit.bxor( "abc", "abc" ) ).to.err()
-                expect( bit.bxor( {}, {} ) ).to.err()
-                expect( bit.bxor() ).to.err()
+                expect( bit.bxor, nil, nil ).to.err()
+                expect( bit.bxor, "abc", "def" ).to.err()
+                expect( bit.bxor, {}, {} ).to.err()
             end
         },
     }

@@ -46,10 +46,9 @@ return {
         {
             name = "Fails on invalid input",
             func = function()
-                expect( bit.band( nil, nil ) ).to.err()
-                expect( bit.band( "abc", "def" ) ).to.err()
-                expect( bit.band( {}, {} ) ).to.err()
-                expect( bit.band() ).to.err()
+                expect( bit.band, nil, nil ).to.err()
+                expect( bit.band, "abc", "def" ).to.err()
+                expect( bit.band, {}, {} ).to.err()
             end
         },
     }
