@@ -3,7 +3,7 @@ return {
     groupName = "bit.ror",
     cases = {
         {
-            name = "Function exists",
+            name = "Should be a function",
             func = function()
                 expect( bit.ror ).to.beA( "function" )
             end

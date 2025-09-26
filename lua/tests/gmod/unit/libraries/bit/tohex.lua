@@ -3,7 +3,7 @@ return {
     groupName = "bit.tohex",
     cases = {
         {
-            name = "Functions exists",
+            name = "Should be a function",
             func = function()
                 expect( bit.tohex ).to.beA( "function" )
             end

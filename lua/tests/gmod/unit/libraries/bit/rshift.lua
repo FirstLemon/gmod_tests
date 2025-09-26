@@ -3,7 +3,7 @@ return {
     groupName = "bit.rshift",
     cases = {
         {
-            name = "Functions exists",
+            name = "Should be a function",
             func = function()
                 expect( bit.rshift ).to.beA( "function" )
             end

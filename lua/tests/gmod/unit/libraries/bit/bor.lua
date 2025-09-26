@@ -3,14 +3,14 @@ return {
     groupName = "bit.bor",
     cases = {
         {
-            name = "Function exists",
+            name = "Should be a function",
             func = function()
                 expect( bit.bor ).to.beA( "function" )
             end
         },
 
         {
-            name = "Positive OR operation",
+            name = "Should handle positive numbers correctly",
             func = function()
                 expect( bit.bor( 8, 8 ) ).to.equal( 8 )
                 expect( bit.bor( 8, 1 ) ).to.equal( 9 )
@@ -19,7 +19,7 @@ return {
         },
 
         {
-            name = "Negative OR operation",
+            name = "Should handle negative numbers correctly",
             func = function()
                 expect( bit.bor( -1, 0 ) ).to.equal( -1 )
                 expect( bit.bor( -8, 1 ) ).to.equal( -7 )
@@ -28,9 +28,10 @@ return {
         },
 
         {
-            name = "OR with zero",
+            name = "Should handle zero values correctly",
             func = function()
                 expect( bit.bor( 0, 69 ) ).to.equal( 69 )
+                expect( bit.bor( -42, 0 ) ).to.equal( -42 )
             end
         },
 
@@ -55,6 +56,9 @@ return {
                 expect( bit.bor, nil, nil ).to.err()
                 expect( bit.bor, "abc", "def" ).to.err()
                 expect( bit.bor, {}, {} ).to.err()
+
+                expect( bit.bor, 123, "abc" ).to.err()
+                expect( bit.bor, "abc", 123 ).to.err()
             end
         },
     }

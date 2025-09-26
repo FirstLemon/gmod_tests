@@ -3,7 +3,7 @@ return {
     groupName = "bit.rol",
     cases = {
         {
-            name = "Function exists",
+            name = "Should be a function",
             func = function()
                 expect( bit.rol ).to.beA( "function" )
             end
@@ -35,10 +35,10 @@ return {
         },
 
         {
-            name = "Functions properly when rotating over the limit",
+            name = "Functions properly when rotating by 32",
             func = function()
                 expect( bit.rol( 1, 32 ) ).to.equal( 1 )
-                expect( bit.rol( 16, 16 ) ).to.equal( 1048576 )
+                expect( bit.rol( 16, 32 ) ).to.equal( 16 )
             end
         },
 
