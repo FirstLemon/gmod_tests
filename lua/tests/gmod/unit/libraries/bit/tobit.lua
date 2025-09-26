@@ -36,10 +36,9 @@ return {
         {
             name = "Fails on invalid input",
             func = function()
-                expect( bit.tobit( nil ) ).to.err()
-                expect( bit.tobit( "abc" ) ).to.err()
-                expect( bit.tobit( {} ) ).to.err()
-                expect( bit.tobit() ).to.err()
+                expect( bit.tobit, nil ).to.err()
+                expect( bit.tobit, "abc" ).to.err()
+                expect( bit.tobit, {} ).to.err()
             end
         },
     }

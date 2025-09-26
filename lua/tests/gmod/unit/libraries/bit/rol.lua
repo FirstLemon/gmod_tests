@@ -14,7 +14,7 @@ return {
             func = function()
                 expect( bit.rol( 8, 1 ) ).to.equal( 16 )
                 expect( bit.rol( 16, 1 ) ).to.equal( 32 )
-                expect( bit.rol( 469, 4 ) ).to equal( 7504 )
+                expect( bit.rol( 469, 4 ) ).to.equal( 7504 )
             end
         },
 
@@ -23,7 +23,7 @@ return {
             func = function()
                 expect( bit.rol( -8, 1 ) ).to.equal( -15 )
                 expect( bit.rol( -16, 1 ) ).to.equal( -31 )
-                expect( bit.rol( -469, 4 ) ).to equal( -7489 )
+                expect( bit.rol( -469, 4 ) ).to.equal( -7489 )
             end
         },
 
@@ -45,10 +45,9 @@ return {
         {
             name = "Fails on invalid input",
             func = function()
-                expect( bit.rol( nil, nil ) ).to.err()
-                expect( bit.rol( "abc", "def" ) ).to.err()
-                expect( bit.rol( {}, {} ) ).to.err()
-                expect( bit.rol() ).to.err()
+                expect( bit.rol, nil, nil ).to.err()
+                expect( bit.rol, "abc", "def" ).to.err()
+                expect( bit.rol, {}, {} ).to.err()
             end
         },
     }

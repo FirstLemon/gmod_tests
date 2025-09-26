@@ -38,10 +38,9 @@ return {
         {
             name = "Fails on invalid input",
             func = function()
-                expect( bit.bnot( nil ) ).to.err()
-                expect( bit.bnot( "abc" ) ).to.err()
-                expect( bit.bnot( {} ) ).to.err()
-                expect( bit.bnot() ).to.err()
+                expect( bit.bnot, nil ).to.err()
+                expect( bit.bnot, "abc" ).to.err()
+                expect( bit.bnot, {} ).to.err()
             end
         },
     }

@@ -31,10 +31,9 @@ return {
         {
             name = "Fails on invalid input",
             func = function()
-                expect( bit.arshift( nil, nil ) ).to.err()
-                expect( bit.arshift( "abc", "def" ) ).to.err()
-                expect( bit.arshift( {}, {} ) ).to.err()
-                expect( bit.arshift() ).to.err()
+                expect( bit.arshift, nil, nil ).to.err()
+                expect( bit.arshift, "abc", "def" ).to.err()
+                expect( bit.arshift, {}, {} ).to.err()
             end
         },
     }

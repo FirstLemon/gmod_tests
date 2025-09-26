@@ -47,15 +47,14 @@ return {
                 expect( bit.bor( 2147483647, 2147483648 ) ).to.equal( -1 )
                 expect( bit.bor( -2147483648, 0 ) ).to.equal( -2147483648 )
             end
-        }
+        },
 
         {
             name = "Fails on invalid input",
             func = function()
-                expect( bit.bor( nil, nil ) ).to.err()
-                expect( bit.bor( "abc", "def" ) ).to.err()
-                expect( bit.bor( {}, {} ) ).to.err()
-                expect( bit.bor() ).to.err()
+                expect( bit.bor, nil, nil ).to.err()
+                expect( bit.bor, "abc", "def" ).to.err()
+                expect( bit.bor, {}, {} ).to.err()
             end
         },
     }

@@ -42,10 +42,9 @@ return {
         {
             name = "Fails on invalid input",
             func = function()
-                expect( bit.rshift( nil, nil ) ).to.err()
-                expect( bit.rshift( "abc", "def" ) ).to.err()
-                expect( bit.rshift( {}, {} ) ).to.err()
-                expect( bit.rshift() ).to.err()
+                expect( bit.rshift, nil, nil ).to.err()
+                expect( bit.rshift, "abc", "def" ).to.err()
+                expect( bit.rshift, {}, {} ).to.err()
             end
         },
     }
