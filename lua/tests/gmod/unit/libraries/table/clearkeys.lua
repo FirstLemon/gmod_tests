@@ -1,6 +1,11 @@
 --- @type GLuaTest_TestGroup
 return {
     groupName = "table.ClearKeys",
+
+    beforeEach = function( state )
+        state.tbSource = {}
+    end,
+
     cases = {
         {
             name = "Exists on the table table",
@@ -10,50 +15,47 @@ return {
         },
 
         {
-            name = "Clearing all keys",
-            func = function()
-                local table1 = {
-                    A = "I",
-                    B = "like",
-                    C = "fish"
+            name = "Returns Table correctly with integer keys",
+            func = function( state )
+                state.tbSource = {
+                    abc = "fish",
+                    def = "power",
                 }
-                local table2 = table.ClearKeys( table1 )
-
-                expect( table2 ).to.equal( {1 = "I", 2 = "like", 3 = "fish"} )
+                local tbResult = table.ClearKeys( state.tbSource )
+                
+                expect( #tbResult ).to.equal( 2 )
+                expect( tbResult[1] ).to.equal( "power" )
+                expect( tbResult[2] ).to.equal( "fish" )
             end
         },
 
         {
             name = "Clearing all keys and preserving the keys",
-            func = function()
-                local table1 = {
-                    One = {A = "I"},
-                    Two = {B = "like"},
-                    Three = {C = "fish"}
+            func = function( state )
+                state.tbSource = {
+                    abc = { one = "fish" },
+                    def = { two = "weak" },
                 }
-                local table2 = table.ClearKeys( table1, true )
+                local tbResult = table.ClearKeys( state.tbSource, true )
+                
+                expect( #tbResult ).to.equal( 2 )
+                expect( tbResult[1].__key ).to.equal( "def" )
+                expect( tbResult[1].two ).to.equal( "weak" )
 
-                expect( table2 ).to.aboutEqual( {
-                        1 = {A = "I", __key = "One"},
-                        2 = {B = "like", __key = "Two"},
-                        3 = {C = "fish", __key = "Three"}
-                    } )
+                expect( tbResult[2].__key ).to.equal( "abc" )
+                expect( tbResult[2].one ).to.equal( "fish" )
             end
         },
 
         {
-            name = "Table has no table type values",
-            func = function()
-                function errFunction()
-                    local table1 = {
-                        A = "I",
-                        B = "like",
-                        C = "fish"
-                    }
-                    local table2 = table.ClearKeys( table1, true )
-                end
-                
-                expect( errFunction ).err()
+            name = "Handles case correctly when preserving keys without table type values",
+            func = function( state )
+                state.tbSource = {
+                    abc = "fish",
+                    def = "power",
+                }
+
+                expect( table.ClearKeys, state.tbSource, true ).to.err()
             end
         },
     }
