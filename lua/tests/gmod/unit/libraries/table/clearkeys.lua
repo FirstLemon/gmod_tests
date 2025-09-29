@@ -48,7 +48,7 @@ return {
         },
 
         {
-            name = "Handles case correctly when preserving keys without table type values",
+            name = "Handles correctly when preserving keys without table type values",
             func = function( state )
                 state.tbSource = {
                     abc = "fish",

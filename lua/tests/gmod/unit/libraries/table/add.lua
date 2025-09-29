@@ -48,7 +48,7 @@ return {
         },
 
         {
-            name = "No source table is being handled properly",
+            name = "Not providing a source table is being handled properly",
             func = function( state )
                 state.tbTarget = { 2 }
                 
@@ -62,7 +62,7 @@ return {
         },
 
         {
-            name = "No target table is being handled properly",
+            name = "Not providing a target table is being handled properly",
             func = function( state )
                 state.tbSource = { 3 }
                 
