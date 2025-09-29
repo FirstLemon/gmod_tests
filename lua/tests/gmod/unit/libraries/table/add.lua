@@ -1,6 +1,12 @@
 --- @type GLuaTest_TestGroup
 return {
     groupName = "table.Add",
+
+    beforeEach = function( state )
+        state.tbSource = {}
+        state.tbTarget = {}
+    end,
+
     cases = {
         {
             name = "Functions exists",
@@ -11,49 +17,59 @@ return {
 
         {
             name = "Functions properly when adding one table onto an empty one",
-            func = function()
-                local table1 = { 5, 3, 1 }
-                local table2 = {} 
+            func = function( state )
+                state.tbSource = { 5, 3, 1 }
+                state.tbTarget = {} 
                 
-                table.Add( table2, table1 )
-
-                expect( table2 ).to.equal( { 5, 3, 1 } )
+                local tbResult = table.Add( state.tbTarget, state.tbSource )
+                
+                expect( tbResult ).to.equal( state.tbTarget )
+                expect( #tbResult ).to.equal( 3 )
+                expect( state.tbTarget[1] ).to.equal( 5 )
+                expect( state.tbTarget[2] ).to.equal( 3 )
+                expect( state.tbTarget[3] ).to.equal( 1 )
             end
         },
 
         {
             name = "Functions properly when adding values of one table to an non-empty table",
-            func = function()
-                local table1 = { 5, 3, 1 }
-                local table2 = { 2 } 
+            func = function( state )
+                state.tbSource = { 5, 3, 1 }
+                state.tbTarget = { 2 }
                 
-                table.Add( table2, table1 )
+                local tbResult = table.Add( state.tbTarget, state.tbSource )
 
-                expect( table2 ).to.equal( { 2, 5, 3, 1 } )
+                expect( #tbResult ).to.equal( 4 )
+                expect( state.tbTarget[1] ).to.equal( 2 )
+                expect( state.tbTarget[2] ).to.equal( 5 )
+                expect( state.tbTarget[3] ).to.equal( 3 )
+                expect( state.tbTarget[4] ).to.equal( 1 )
             end
         },
 
         {
-            name = "No source table",
-            func = function()
-                local table2 = { 2 }
+            name = "No source table is being handled properly",
+            func = function( state )
+                state.tbTarget = { 2 }
                 
-                table.Add( table2, table1 )
+                local tbResult = table.Add( state.tbTarget, nil )
 
-                expect( table1 ).notTo.exist()
-                expect( table2 ).to.equal( 2 )
+                expect( tbSource ).notTo.exist()
+                expect( tbResult ).to.equal( state.tbTarget )
+                expect( #tbResult ).to.equal( 1 )
+                expect( state.tbTarget[1] ).to.equal( 2 )
             end
         },
 
         {
-            name = "No target table",
-            func = function()
-                local table1 = { 5, 3, 1 }
+            name = "No target table is being handled properly",
+            func = function( state )
+                state.tbSource = { 3 }
                 
-                table.Add( table2, table1 )
+                local tbResult = table.Add( nil, tbSource )
 
-                expect( table2 ).toNot.exist()
-                expect( table.Add, table2, table1 ).to.err()
+                expect( tbTarget ).toNot.exist()
+                expect( tbResult ).to.equal( nil )
             end
         },
     }
