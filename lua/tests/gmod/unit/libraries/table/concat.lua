@@ -3,7 +3,7 @@ return {
     groupName = "table.concat",
 
     beforeEach = function( state )
-        state.tbSource = {}
+        state.tbSource1 = {}
     end,
 
     cases = {
@@ -15,18 +15,41 @@ return {
         },
 
         {
-
-            
-            name = "Functions properly when trying to collapse a keyvalue structure",
+            name = "Concatenates table contents properly with default config",
             func = function( state )
-                state.tbSource = {
-                    { Key = "Key1", Value = "Hello" },
-                    { Key = "Key2", Value = 456},
-                }
-                local tbResult = table.CollapseKeyValue( state.tbSource )
+                state.tbSource1 = { "I", "love", "fish!" }
+                
+                expect( state.tbSource1 ).to.equal( "Ilovefish!" )
+            end
+        },
 
-                expect( tbResult.Key1 ).to.equal( "Hello" )
-                expect( tbResult.Key2 ).to.equal( 456 )
+        {
+            name = "Concatenates table contents properly with different configs",
+            func = function( state )
+                state.tbSource1 = { "I", "love", "fish!" }
+                
+                expect( table.concat( state.tbSource1, " " ) ).to.equal( "I love fish!" )
+                expect( table.concat( state.tbSource1, " ", 2 ) ).to.equal( "love fish!" )
+                expect( table.concat( state.tbSource1, " ", 1, 2 ) ).to.equal( "I love" )
+                expect( table.concat( state.tbSource1, "-" ) ).to.equal( "I-love-fish!" )
+            end
+        },
+
+        {
+            name = "Handles different types of input args",
+            func = function( state )
+                state.tbSource1 = { 67, "mustard" }
+                
+                expect( table.concat( state.tbsource2, " " )).to.equal( "67 mustard" )
+            end
+        },
+
+        {
+            name = "Throws error when incorrect type is provided",
+            func = function( state )
+                state.tbSource1 = { "I", 5, { 2, 4 } }
+                
+                expect( table.concat( state.tbSource1 ) ).to.errWith( "invalid value (table) at index 3 in table for 'concat'" )
             end
         },
     }
